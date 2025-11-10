@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+// TAMBAHKAN BARIS INI
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // TAMBAHKAN BLOK 'IF' INI
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
